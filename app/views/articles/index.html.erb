@@ -12,7 +12,15 @@
                 
                 <div class="article-description">
                     <%= truncate(article.description, length: 100) %>
+                    <div class="article-meta-details">
+                        <small>Created By: <%= article.user.username if article.user%>
+                        <%= time_ago_in_words(article.created_at)%> ago,
+                        Last updated: <%=time_ago_in_words(article.updated_at)%>
+                        </small>
+                    </div>
+                
                 </div>
+                
                 <div class="article-actions">
                     <%= link_to 'Show complete Article', article_path(article), class: "btn btn-sm btn-warning" %>        
                     <%= link_to 'Edit this Article', edit_article_path(article), class: "btn btn-sm btn-primary" %> <!--we dont need @article here because in de each do method we set the var to 'article' -->
